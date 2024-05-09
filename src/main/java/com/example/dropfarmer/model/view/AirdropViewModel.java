@@ -1,39 +1,32 @@
-package com.example.dropfarmer.model.entity;
+package com.example.dropfarmer.model.view;
 
 import com.example.dropfarmer.model.entity.enums.CategoryEnum;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
-import java.util.List;
+public class AirdropViewModel {
 
-
-@Entity
-@Table
-public class AirdropEntity extends BaseEntity {
-
-    @Column(name = "project_name", nullable = false)
+    private Long id;
     private String projectName;
-    @Column(name = "image_url")
     private String imageUrl;
-    @Column(name = "project_twitter")
     private String projectXUrl;
-    @Column(name = "project_site")
     private String projectOfficialSiteUrl;
-    @Column(name = "categories", nullable = false)
-    @Enumerated(EnumType.STRING)
     private CategoryEnum category;
-    @Column
     private boolean isCompleted;
-    @Column(name = "eligibility_checker_url")
     private String eligibilityCheckerUrl;
-    @Column
     private String snapshot;
-    @OneToMany(mappedBy = "airdrop")
-    private List<StrategyEntity> farmingStrategiesUrls;
 
-    public AirdropEntity() {
+    public AirdropViewModel() {
     }
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getProjectName() {
         return projectName;
@@ -97,13 +90,5 @@ public class AirdropEntity extends BaseEntity {
 
     public void setSnapshot(String snapshot) {
         this.snapshot = snapshot;
-    }
-
-    public List<StrategyEntity> getFarmingStrategiesUrls() {
-        return farmingStrategiesUrls;
-    }
-
-    public void setFarmingStrategiesUrls(List<StrategyEntity> farmingStrategiesUrls) {
-        this.farmingStrategiesUrls = farmingStrategiesUrls;
     }
 }
